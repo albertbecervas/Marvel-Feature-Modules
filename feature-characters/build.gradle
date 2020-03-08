@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/common-android.gradle"
+
+dependencies {
+    def moduleDependencies = rootProject.ext.modules
+    implementation moduleDependencies.base
+    implementation moduleDependencies.cmpModule
+    implementation moduleDependencies.appResources
+    implementation moduleDependencies.network
+
+    def glideDependencies = rootProject.ext.glide
+    implementation glideDependencies.glide
+    annotationProcessor glideDependencies.glide_compiler
+
+    def retrofitDependencies = rootProject.ext.retrofit
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.moshi
+    testImplementation "com.squareup.okhttp3:mockwebserver:3.14.7"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:3.14.7"
+    implementation 'com.google.code.gson:gson:2.8.6'
+}

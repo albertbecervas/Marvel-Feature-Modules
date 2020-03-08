@@ -1,0 +1,34 @@
+apply plugin: 'com.android.application'
+apply from: "$rootDir/common-android.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    defaultConfig {
+        applicationId 'com.abecerra.tech_test_ed'
+    }
+}
+
+dependencies {
+    def moduleDependencies = rootProject.ext.modules
+    implementation moduleDependencies.base
+    implementation moduleDependencies.appResources
+    implementation moduleDependencies.cmpModule
+    implementation moduleDependencies.network
+    implementation moduleDependencies.feature_characters
+
+    def daggerDependencies = rootProject.ext.dagger
+    implementation daggerDependencies.dagger
+    implementation daggerDependencies.daggerAndroid
+    implementation daggerDependencies.daggerAndroidSupport
+    kapt daggerDependencies.daggerAndroidProcessor
+    kapt daggerDependencies.daggerCompiler
+    annotationProcessor daggerDependencies.daggerCompiler
+    compileOnly daggerDependencies.javaxJsrApi
+    implementation daggerDependencies.javaxInject
+
+    def retrofitDependencies = rootProject.ext.retrofit
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.moshi
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+}

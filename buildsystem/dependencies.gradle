@@ -1,0 +1,57 @@
+apply from: 'buildsystem/version.gradle'
+
+ext {
+    app = [
+            kotlin                 : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            appCompat              : "androidx.appcompat:appcompat:$androidx.appCompat",
+            androidx_core          : "androidx.core:core-ktx:$androidx.appCompat",
+            androidx_support_legacy: "androidx.legacy:legacy-support-v4:$androidx.support",
+            multidex               : "androidx.multidex:multidex:$multidexVersion",
+            constraintLayout       : "androidx.constraintlayout:constraintlayout:$androidx.constraintLayout",
+            recyclerView           : "androidx.recyclerview:recyclerview:$androidx.recyclerView"
+    ]
+
+    google = [
+            gson: 'com.google.code.gson:gson:2.8.6'
+    ]
+
+    modules = [
+            base              : project(':base'),
+            appResources      : project(':app-resources'),
+            cmpModule         : project(":components"),
+            network           : project(':network'),
+            feature_characters: project(':feature-characters')
+    ]
+
+    testing = [
+            junit         : "junit:junit:$testing.junit",
+            android_junit : "androidx.test.ext:junit:$testing.android_junit",
+            espresso      : "androidx.test.espresso:espresso-core:$testing.espresso",
+            mockito       : "org.mockito:mockito-core:$testing.mockito",
+            mockWebServer : "com.squareup.okhttp3:mockwebserver:$testing.mockWebServer",
+            mockito_kotlin: "com.nhaarman:mockito-kotlin:$testing.mockito_kotlin",
+            rules         : 'androidx.test:rules:1.1.0-beta02',
+            dagger        : "com.google.dagger:dagger-compiler:2.15",
+            truth         : 'com.google.truth:truth:0.42'
+    ]
+
+    glide = [
+            glide         : "com.github.bumptech.glide:glide:4.10.0",
+            glide_compiler: "com.github.bumptech.glide:compiler:4.10.0"
+    ]
+
+    dagger = [
+            dagger                : "com.google.dagger:dagger:$dagger.dagger2_version",
+            daggerAndroid         : "com.google.dagger:dagger-android:$dagger.dagger2_version",
+            daggerAndroidSupport  : "com.google.dagger:dagger-android-support:$dagger.dagger2_version",
+            daggerCompiler        : "com.google.dagger:dagger-compiler:$dagger.dagger2_version",
+            daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:$dagger.dagger2_version",
+            javaxJsrApi           : "javax.annotation:jsr250-api:$dagger.javaxJsrApi_version",
+            javaxInject           : "javax.inject:javax.inject:$dagger.javaxInject_version"
+    ]
+
+    retrofit = [
+            retrofit: "com.squareup.retrofit2:retrofit:$retrofit.retrofit_version",
+            moshi   : "com.squareup.retrofit2:converter-moshi:$retrofit.moshi_version"
+    ]
+}

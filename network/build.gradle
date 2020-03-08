@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/common-android.gradle"
+
+android {
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_API_URL", BASE_API_URL
+            buildConfigField "String", "TIME_STAMP", TIME_STAMP
+            buildConfigField "String", "API_KEY", API_KEY
+            buildConfigField "String", "HASH", HASH
+        }
+    }
+}
+
+dependencies {
+    def retrofitDependencies = rootProject.ext.retrofit
+    implementation retrofitDependencies.retrofit
+
+    def googleDependencies = rootProject.ext.google
+    implementation googleDependencies.gson
+}
